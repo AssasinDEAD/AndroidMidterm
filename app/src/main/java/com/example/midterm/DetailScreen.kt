@@ -10,7 +10,6 @@ import androidx.navigation.NavHostController
 
 @Composable
 fun DetailScreen(itemName: String, navController: NavHostController) {
-    // Находим фильм по названию из списка
     val film = filmList.find { it.title == itemName } ?: return
 
     Column(

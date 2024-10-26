@@ -19,41 +19,37 @@ fun FilmContent(
     modifier: Modifier = Modifier,
     showFullContent: Boolean = false
 ) {
-    // Состояние для управления отображением полноэкранного изображения
     var showFullScreenImage by remember { mutableStateOf(false) }
 
     if (showFullScreenImage) {
-        // Полноэкранное изображение
         Dialog(onDismissRequest = { showFullScreenImage = false }) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .clickable { showFullScreenImage = false }, // Закрытие при клике
+                    .clickable { showFullScreenImage = false },
                 contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = painterResource(id = film.imageRes),
                     contentDescription = "Film poster",
-                    modifier = Modifier.fillMaxSize() // Изображение на весь экран
+                    modifier = Modifier.fillMaxSize()
                 )
             }
         }
     } else {
         if (showFullContent) {
-            // Вертикальное расположение для детального экрана
             Column(
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Изображение с возможностью увеличения
                 Image(
                     painter = painterResource(id = film.imageRes),
                     contentDescription = "Film poster",
                     modifier = Modifier
                         .size(200.dp)
-                        .clickable { showFullScreenImage = true } // Нажатие для увеличения
+                        .clickable { showFullScreenImage = true }
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -69,7 +65,6 @@ fun FilmContent(
                 Text(text = "Рейтинг: ${film.rating}", fontSize = 16.sp)
             }
         } else {
-            // Горизонтальное расположение для списка
             Row(
                 modifier = modifier
                     .padding(8.dp),
@@ -80,7 +75,7 @@ fun FilmContent(
                     contentDescription = "Film poster",
                     modifier = Modifier
                         .size(100.dp)
-                        .clickable { showFullScreenImage = true } // Нажатие для увеличения
+                        .clickable { showFullScreenImage = true }
                 )
 
                 Spacer(modifier = Modifier.width(16.dp))
