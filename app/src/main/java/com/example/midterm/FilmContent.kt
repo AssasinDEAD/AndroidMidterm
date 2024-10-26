@@ -1,4 +1,5 @@
 package com.example.midterm
+import com.example.midterm.FilmItem
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
